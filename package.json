@@ -11,14 +11,21 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.sayHello"
+    "onCommand:extension.toggleUnitTests"
   ],
   "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.sayHello",
-        "title": "Hello World"
+        "command": "extension.toggleUnitTests",
+        "title": "Toggle unit tests"
+        }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.toggleUnitTests",
+        "key": "Ctrl+9",
+        "mac": "Cmd+9"
       }
     ]
   },
