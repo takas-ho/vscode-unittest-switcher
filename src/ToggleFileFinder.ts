@@ -1,3 +1,4 @@
+'use strict';
 
 import * as vscode from 'vscode';
 let path = require('path');
@@ -18,19 +19,19 @@ export class ToggleFileFinder {
     private behavior: ToggleFileFinderBehavior;
     private currentIndex: number;
     private matchingFiles: string[];
-    private callback: (name: string) => void;
+    public callback: (name: string) => void;
 
     public constructor(editorFileName: string, fileSuffixes: string[], excludePattern: string,
-                        callback: (name: string) => void, behavior?: ToggleFileFinderBehavior) {
+                        behavior?: ToggleFileFinderBehavior) {
         this.editorFileName = editorFileName;
         this.fileSuffixes = fileSuffixes;
         this.excludePattern = excludePattern;
-        this.callback = callback;
         this.behavior = behavior ? behavior : new DefaultToggleFileFinderBehavior;
         this.currentIndex = -1;
     }
 
-    public readFiles() {
+    public readFiles(callsNext?: boolean) {
+        console.log('readFiles');
         let name: string = path.parse(this.editorFileName).name;
         let ext: string = path.parse(this.editorFileName).ext;
         let unitTestBase: string = name;
@@ -49,13 +50,15 @@ export class ToggleFileFinder {
             });
             self.matchingFiles.sort();
             self.currentIndex = self.matchingFiles.indexOf(self.editorFileName);
-            self.callNext();
+            if (callsNext) {
+                self.callNext();
+            }
         });
     }
 
     public changeToNext() {
         if (this.currentIndex < 0) {
-            this.readFiles();
+            this.readFiles(true);
         } else {
             this.callNext();
         }
@@ -64,5 +67,13 @@ export class ToggleFileFinder {
     private callNext() {
         this.currentIndex = (this.currentIndex + 1) % this.matchingFiles.length;
         this.callback( this.matchingFiles[this.currentIndex]);
+    }
+
+    public _onEvent(editor: vscode.TextEditor) {
+        if (editor.document.fileName === this.matchingFiles[this.currentIndex]) {
+            return;
+        }
+        this.editorFileName = editor.document.fileName;
+        this.readFiles();
     }
 }
