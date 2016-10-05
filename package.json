@@ -1,0 +1,42 @@
+{
+  "name": "unittest-switcher",
+  "displayName": "unittest-switcher",
+  "description": "Switch the code and unit tests.",
+  "version": "0.0.1",
+  "publisher": "takas-ho",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.toggleUnitTests"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.toggleUnitTests",
+        "title": "Toggle unit tests"
+        }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.toggleUnitTests",
+        "key": "Ctrl+9",
+        "mac": "Cmd+9"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "tslint": "^3.15.1",
+    "typescript": "^1.8.5",
+    "vscode": "^0.11.0"
+  }
+}
