@@ -14,10 +14,12 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "unittest-switcher" is now active!');
 
+    let searchExclude = vscode.workspace.getConfiguration('search').get('exclude');
+    let excludes: string[] = Object.keys(searchExclude);
     let unittestSuffixes: string[] = vscode.workspace.getConfiguration('unittest-switcher')
         .get<string[]>('unittest.suffix', ['Spec', '-spec', 'Test', '-test', '.test']);
     let finder = new toggle.ToggleFileFinder(vscode.window.activeTextEditor.document.fileName,
-        unittestSuffixes, '**/node_modules/**');
+        unittestSuffixes, '{' + excludes.join(',') + '}');
     let controller = new FinderController(finder);
     finder.callback = name => {
         vscode.workspace.openTextDocument(name).then(doc => {
