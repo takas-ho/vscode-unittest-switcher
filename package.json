@@ -27,7 +27,18 @@
         "key": "Ctrl+9",
         "mac": "Cmd+9"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "UnitTest switcher options",
+      "properties": {
+        "unittest-switcher.unittest.suffix": {
+          "default": ["Spec", "-spec", "Test", "-test", ".test"],
+          "description": "UnitTest suffix",
+          "type": ["string"]
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
