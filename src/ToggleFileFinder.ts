@@ -50,6 +50,7 @@ export class ToggleFileFinder {
             });
             self.matchingFiles.sort();
             self.currentIndex = self.matchingFiles.indexOf(self.editorFileName);
+            self.outputMatchingFiles();
             if (callsNext) {
                 self.callNext();
             }
@@ -64,7 +65,18 @@ export class ToggleFileFinder {
         }
     }
 
+    public isFirstTime() {
+        return !this.matchingFiles;
+    }
+
+    public hasNext() {
+        return this.matchingFiles && 1 < this.matchingFiles.length;
+    }
+
     private callNext() {
+        if (!this.hasNext()) {
+            return;
+        }
         this.currentIndex = (this.currentIndex + 1) % this.matchingFiles.length;
         this.callback( this.matchingFiles[this.currentIndex]);
     }
@@ -75,5 +87,17 @@ export class ToggleFileFinder {
         }
         this.editorFileName = editor.document.fileName;
         this.readFiles();
+    }
+
+    public outputMatchingFiles() {
+        if (!this.matchingFiles) {
+            console.log('null');
+            return;
+        }
+        else if (this.matchingFiles.length === 0) {
+            console.log('[]');
+            return;
+        }
+        console.log(this.matchingFiles.join('\n'));
     }
 }

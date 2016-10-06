@@ -38,7 +38,11 @@ export function activate(context: vscode.ExtensionContext) {
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('unittest-switcher.go-to-test-code', () => {
         // The code you place here will be executed every time your command is executed
-        finder.changeToNext();
+        if (finder.hasNext() || finder.isFirstTime()) {
+            finder.changeToNext();
+        } else {
+            vscode.window.showWarningMessage('Not found match files...');
+        }
     });
 
     context.subscriptions.push(controller);
