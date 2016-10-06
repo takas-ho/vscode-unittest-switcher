@@ -5,10 +5,14 @@ let path = require('path');
 
 export interface ToggleFileFinderBehavior {
     findFiles(include: string, exclude: string): Thenable<vscode.Uri[]>;
+    showWarningMessage(message: string, ...items: string[]);
 }
 class DefaultToggleFileFinderBehavior implements ToggleFileFinderBehavior {
     findFiles(include: string, exclude: string): Thenable<vscode.Uri[]> {
         return vscode.workspace.findFiles(include, exclude, 100);
+    }
+    showWarningMessage(message: string, ...items: string[]) {
+        vscode.window.showWarningMessage(message, ...items);
     }
 }
 export class ToggleFileFinder {
@@ -75,10 +79,11 @@ export class ToggleFileFinder {
 
     private callNext() {
         if (!this.hasNext()) {
+            this.behavior.showWarningMessage('Not found match files...');
             return;
         }
         this.currentIndex = (this.currentIndex + 1) % this.matchingFiles.length;
-        this.callback( this.matchingFiles[this.currentIndex]);
+        this.callback(this.matchingFiles[this.currentIndex]);
     }
 
     public _onEvent(editor: vscode.TextEditor) {

@@ -7,6 +7,8 @@ class FakeBehavior implements ToggleFileFinder.ToggleFileFinderBehavior {
     findFiles(include: string, exclude: string): Thenable<vscode.Uri[]> {
         return null;
     }
+    showWarningMessage(message: string, ...items: string[]) {
+    }
 }
 suite('Extension Tests', () => {
 
