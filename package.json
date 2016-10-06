@@ -2,7 +2,7 @@
   "name": "unittest-switcher",
   "displayName": "unittest-switcher",
   "description": "Switch the code and unit tests.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "takas-ho",
   "engines": {
     "vscode": "^1.5.0"
