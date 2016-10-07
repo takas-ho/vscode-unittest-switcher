@@ -29,6 +29,13 @@
         "when": "editorTextFocus"
       }
     ],
+    "menus": {
+        "editor/context": [{
+            "when": "resourceLangId != markdown",
+            "command": "unittest-switcher.go-to-test-code",
+            "group": "navigation"
+        }]
+    },
     "configuration": {
       "type": "object",
       "title": "UnitTest Switcher Options",
