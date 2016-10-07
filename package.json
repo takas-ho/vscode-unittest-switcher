@@ -27,7 +27,8 @@
     "commands": [
       {
         "command": "unittest-switcher.go-to-test-code",
-        "title": "Go to Test/Code"
+        "title": "Go to Test/Code",
+        "category": "Tests"
       }
     ],
     "keybindings": [
