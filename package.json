@@ -11,26 +11,27 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.toggleUnitTests"
+    "onCommand:unittest-switcher.go-to-test-code"
   ],
   "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.toggleUnitTests",
-        "title": "Toggle unit tests"
+        "command": "unittest-switcher.go-to-test-code",
+        "title": "Go to Test/Code"
         }
     ],
     "keybindings": [
       {
-        "command": "extension.toggleUnitTests",
+        "command": "unittest-switcher.go-to-test-code",
         "key": "Ctrl+9",
-        "mac": "Cmd+9"
+        "mac": "Cmd+9",
+        "when": "editorTextFocus"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "UnitTest switcher options",
+      "title": "UnitTest Switcher Options",
       "properties": {
         "unittest-switcher.unittest.suffix": {
           "default": ["Spec", "-spec", "Test", "-test", ".test"],
