@@ -42,6 +42,7 @@ export class FinderController {
 
     public extractSearchExclude(searchExclude): string[] {
         let excludes: string[] = Object.keys(searchExclude);
+        excludes = excludes.filter(value => { return searchExclude[value]; });
         return excludes;
     }
 }
