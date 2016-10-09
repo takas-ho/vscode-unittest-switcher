@@ -11,6 +11,8 @@ This extension supports that switch the `unit test` / `production code`.
 
 #### Example
 
+![Navigation](images/preview.gif)
+
 - If you are editing a `foo.js`, When the Command Palette(F1) `Go to Test/Code`(or press key `CTRL + 9` on editor), switched to `fooSpec.js`.
 
 ## Settings
