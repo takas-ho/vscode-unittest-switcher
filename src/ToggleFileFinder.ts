@@ -45,6 +45,9 @@ export class ToggleFileFinder {
         this.matchingFiles = [];
         let self = this;
         this.behavior.findFiles('**/' + unitTestBase + '{,' + this.fileSuffixes.join(',') + '}' + ext, self.excludePattern).then(uris => {
+            if (!uris) {
+                return;
+            }
             uris.forEach(uri => {
                 self.matchingFiles.push(uri.path);
             });
