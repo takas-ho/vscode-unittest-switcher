@@ -20,7 +20,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:unittest-switcher.go-to-test-code"
+    "*"
   ],
   "main": "./out/src/extension",
   "contributes": {

@@ -25,11 +25,7 @@ export class ToggleFileFinder {
     private matchingFiles: string[];
     public callback: (name: string) => void;
 
-    public constructor(editorFileName: string, fileSuffixes: string[], excludePatterns: string[],
-                        behavior?: ToggleFileFinderBehavior) {
-        this.editorFileName = editorFileName;
-        this.fileSuffixes = fileSuffixes;
-        this.excludePattern = this.resolveExcludePatterns(excludePatterns);
+    public constructor(behavior?: ToggleFileFinderBehavior) {
         this.behavior = behavior ? behavior : new DefaultToggleFileFinderBehavior;
         this.currentIndex = -1;
     }
@@ -86,16 +82,19 @@ export class ToggleFileFinder {
         this.callback(this.matchingFiles[this.currentIndex]);
     }
 
-    public _onEvent(editor: vscode.TextEditor) {
-        if (editor.document.fileName === this.matchingFiles[this.currentIndex]) {
-            return;
-        }
-        this.editorFileName = editor.document.fileName;
+    public readFilesBy(editorFileName: string, fileSuffixes: string[], excludePatterns: string[]) {
+        this.editorFileName = editorFileName;
+        this.fileSuffixes = fileSuffixes;
+        this.excludePattern = this.resolveExcludePatterns(excludePatterns);
         this.readFiles();
     }
 
     private resolveExcludePatterns(excludePatterns: string[]): string {
         return '{' + excludePatterns.join(',') + '}';
+    }
+
+    public currentFileOfToggle(): string {
+        return this.isFirstTime() ? null : this.matchingFiles[this.currentIndex];
     }
 
     public outputMatchingFiles() {

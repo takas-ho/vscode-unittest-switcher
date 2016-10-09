@@ -15,12 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "unittest-switcher" is now active!');
 
-    let searchExclude = vscode.workspace.getConfiguration('search').get('exclude');
-    let excludes: string[] = Object.keys(searchExclude);
-    let unittestSuffixes: string[] = vscode.workspace.getConfiguration('unittest-switcher')
-        .get<string[]>('unittest.suffix', ['Spec', '-spec', 'Test', '-test', '.test']);
-    let finder = new toggle.ToggleFileFinder(vscode.window.activeTextEditor.document.fileName,
-        unittestSuffixes, excludes);
+    let finder = new toggle.ToggleFileFinder();
     let controller = new control.FinderController(finder);
     finder.callback = name => {
         vscode.workspace.openTextDocument(name).then(doc => {
@@ -33,6 +28,9 @@ export function activate(context: vscode.ExtensionContext) {
             console.error(err);
         });
     };
+    if (vscode.window.activeTextEditor) {
+        controller.readFilesIfChangedEditor(vscode.window.activeTextEditor);
+    }
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand

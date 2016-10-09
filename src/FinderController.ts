@@ -26,6 +26,22 @@ export class FinderController {
     }
 
     private _onEvent(editor: vscode.TextEditor) {
-        this.finder._onEvent(editor);
+        this.readFilesIfChangedEditor(editor);
+    }
+
+    public readFilesIfChangedEditor(editor: vscode.TextEditor) {
+        let editorFileName: string = editor.document.fileName;
+        if (editorFileName === this.finder.currentFileOfToggle()) {
+            return;
+        }
+        let searchExclude = vscode.workspace.getConfiguration('search').get('exclude');
+        let unittestSuffixes: string[] = vscode.workspace.getConfiguration('unittest-switcher')
+            .get<string[]>('unittest.suffix', ['Spec', '-spec', 'Test', '-test', '.test']);
+        this.finder.readFilesBy(editorFileName, unittestSuffixes, this.extractSearchExclude(searchExclude));
+    }
+
+    public extractSearchExclude(searchExclude): string[] {
+        let excludes: string[] = Object.keys(searchExclude);
+        return excludes;
     }
 }

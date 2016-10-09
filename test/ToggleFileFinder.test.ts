@@ -17,7 +17,7 @@ suite('Extension Tests', () => {
 
     beforeEach(() => {
         behavior = new FakeBehavior();
-        sut = new ToggleFileFinder.ToggleFileFinder(null, null, null, behavior);
+        sut = new ToggleFileFinder.ToggleFileFinder(behavior);
     });
 
     test('Something 1', () => {
