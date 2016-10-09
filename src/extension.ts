@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
     let unittestSuffixes: string[] = vscode.workspace.getConfiguration('unittest-switcher')
         .get<string[]>('unittest.suffix', ['Spec', '-spec', 'Test', '-test', '.test']);
     let finder = new toggle.ToggleFileFinder(vscode.window.activeTextEditor.document.fileName,
-        unittestSuffixes, '{' + excludes.join(',') + '}');
+        unittestSuffixes, excludes);
     let controller = new control.FinderController(finder);
     finder.callback = name => {
         vscode.workspace.openTextDocument(name).then(doc => {
