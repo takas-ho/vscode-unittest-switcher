@@ -49,7 +49,7 @@ export class ToggleFileFinder {
                 return;
             }
             uris.forEach(uri => {
-                self.matchingFiles.push(uri.path);
+                self.matchingFiles.push(uri.fsPath);
             });
             self.matchingFiles.sort();
             self.currentIndex = self.matchingFiles.indexOf(self.editorFileName);
