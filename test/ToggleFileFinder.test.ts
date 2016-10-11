@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 
- import * as vscode from 'vscode';
+import * as vscode from 'vscode';
 import * as ToggleFileFinder from '../src/ToggleFileFinder';
 
 class FakeBehavior implements ToggleFileFinder.ToggleFileFinderBehavior {
