@@ -22,7 +22,7 @@ export class ToggleFileFinder {
     private excludePattern: string;
     private behavior: ToggleFileFinderBehavior;
     private currentIndex: number;
-    private matchingFiles: string[];
+    public matchingFiles: string[];
     public callback: (name: string) => void;
 
     public constructor(behavior?: ToggleFileFinderBehavior) {
@@ -30,8 +30,7 @@ export class ToggleFileFinder {
         this.currentIndex = -1;
     }
 
-    public readFiles(callsNext?: boolean) {
-        console.log('readFiles');
+    public readFiles(callsNext?: boolean): Thenable<void> {
         let name: string = path.parse(this.editorFileName).name;
         let ext: string = path.parse(this.editorFileName).ext;
         let unitTestBase: string = name;
@@ -44,7 +43,8 @@ export class ToggleFileFinder {
 
         this.matchingFiles = [];
         let self = this;
-        this.behavior.findFiles('**/' + unitTestBase + '{,' + this.fileSuffixes.join(',') + '}' + ext, self.excludePattern).then(uris => {
+        let promise: Thenable<vscode.Uri[]> = this.behavior.findFiles('**/' + unitTestBase + '{,' + this.fileSuffixes.join(',') + '}' + ext, self.excludePattern);
+        return promise.then(uris => {
             if (!uris) {
                 return;
             }
@@ -53,7 +53,6 @@ export class ToggleFileFinder {
             });
             self.matchingFiles.sort();
             self.currentIndex = self.matchingFiles.indexOf(self.editorFileName);
-            self.outputMatchingFiles();
             if (callsNext) {
                 self.callNext();
             }
@@ -85,15 +84,15 @@ export class ToggleFileFinder {
         this.callback(this.matchingFiles[this.currentIndex]);
     }
 
-    public readFilesBy(editorFileName: string, fileSuffixes: string[], excludePatterns: string[]) {
+    public readFilesBy(editorFileName: string, fileSuffixes: string[], excludePatterns: string[]): Thenable<void> {
         this.editorFileName = editorFileName;
         this.fileSuffixes = fileSuffixes;
         this.excludePattern = this.resolveExcludePatterns(excludePatterns);
-        this.readFiles();
+        return this.readFiles();
     }
 
     private resolveExcludePatterns(excludePatterns: string[]): string {
-        return '{' + excludePatterns.join(',') + '}';
+        return excludePatterns ? '{' + excludePatterns.join(',') + '}' : null;
     }
 
     public currentFileOfToggle(): string {
