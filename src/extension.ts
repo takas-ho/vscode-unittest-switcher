@@ -3,6 +3,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as toggle from './ToggleFileFinder';
+import * as control from './FinderController';
 
 // let finder: toggle.ToggleFileFinder;
 
@@ -14,9 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "unittest-switcher" is now active!');
 
-    let finder = new toggle.ToggleFileFinder(vscode.window.activeTextEditor.document.fileName,
-        ['Spec', 'Test', '.test'], '**/node_modules/**');
-    let controller = new FinderController(finder);
+    let finder = new toggle.ToggleFileFinder();
+    let controller = new control.FinderController(finder);
     finder.callback = name => {
         vscode.workspace.openTextDocument(name).then(doc => {
             vscode.window.showTextDocument(doc).then(editor => {
@@ -28,11 +28,14 @@ export function activate(context: vscode.ExtensionContext) {
             console.error(err);
         });
     };
+    if (vscode.window.activeTextEditor) {
+        controller.readFilesIfChangedEditor(vscode.window.activeTextEditor);
+    }
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.toggleUnitTests', () => {
+    let disposable = vscode.commands.registerCommand('unittest-switcher.go-to-test-code', () => {
         // The code you place here will be executed every time your command is executed
         finder.changeToNext();
     });
@@ -43,30 +46,4 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
-}
-
-class FinderController {
-
-    private finder: toggle.ToggleFileFinder;
-    private _disposable: vscode.Disposable;
-
-    constructor(finder: toggle.ToggleFileFinder) {
-        this.finder = finder;
-
-        // subscribe to selection change and editor activation events
-        let subscriptions: vscode.Disposable[] = [];
-        // vscode.window.onDidChangeTextEditorSelection(this._onEvent, this, subscriptions);
-        vscode.window.onDidChangeActiveTextEditor(this._onEvent, this, subscriptions);
-
-        // create a combined disposable from both event subscriptions
-        this._disposable = vscode.Disposable.from(...subscriptions);
-    }
-
-    dispose() {
-        this._disposable.dispose();
-    }
-
-    private _onEvent(editor: vscode.TextEditor) {
-        this.finder._onEvent(editor);
-    }
 }

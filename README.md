@@ -1,66 +1,60 @@
-# vscode-unittest-switcher
-Switch the code and unit tests.
+# Switch the unit test / production code.
 
-This is the README for your extension "unittest-switcher". After writing up a brief description, we recommend including the following sections.
+This extension supports that switch the `unit test` / `production code`.
 
 ## Features
+- Switch the `unit test` / `production code`.
+    - Editor context menu `Go to Test/Code`.
+    - Keyboard Shortcut `CTRL + 9` key.
+    - Invoke `>Go to Test/Code` to the Command Palette(F1).
+- Customizable suffix rule of `unit test`.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+#### Example
 
-For example if there is an image subfolder under your extension project workspace:
+![Navigation](images/preview.gif)
 
-\!\[feature X\]\(images/feature-x.png\)
+- If you are editing a `foo.js`, When the Command Palette(F1) `Go to Test/Code`(or press key `CTRL + 9` on editor), switched to `fooSpec.js`.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Settings
+- suffix rule of `unit test`.
+```json
+{
+    // UnitTest suffix
+    "unittest-switcher.unittest.suffix": [
+        "Spec",
+        "-spec",
+        "Test",
+        "-test",
+        ".test"
+    ],
+}
+```
+- Default switchig rule is...
 
-## Requirements
+|Switch?|production code|unit test|
+|----|----|----|
+|Yes|foo.js|fooSpec.js|
+|Yes|foo.js|foo-spec.js|
+|Yes|foo.js|fooTest.js|
+|Yes|foo.js|foo-test.js|
+|Yes|foo.js|foo.test.js|
+|No|foo.js|foo.test.ts|
+|No|foo.js|fooSpec.js.map|
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Keyboard Shortcuts
 
-## Extension Settings
+The extension defines a editor keyboard shortcut for the `CTRL + 9` key.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Hommage
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.2
 
-### 1.0.0
+- Release to minimum features.
 
-Initial release of ...
+## License
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+MIT &#xA9; 2016 Takashi HOMMA (takas-ho)
