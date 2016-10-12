@@ -5,6 +5,10 @@
   "version": "0.1.0",
   "author": "HOMMA Takashi",
   "license": "MIT",
+  "keywords": [
+    "test",
+    "unittest"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/takas-ho/vscode-unittest-switcher.git"
