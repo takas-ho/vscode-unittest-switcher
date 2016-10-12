@@ -51,6 +51,12 @@ It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
+### 0.1.0
+
+- Added suffix settings of unit test.
+- Added editor context menu `Go to Test/Code`.
+- Fix toggle unit test / production code on Windows.
+
 ### 0.0.2
 
 - Release to minimum features.

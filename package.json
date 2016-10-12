@@ -1,8 +1,8 @@
 {
   "name": "unittest-switcher",
   "displayName": "UnitTest Switcher",
-  "description": "Switch the unit test / code.",
-  "version": "0.0.2",
+  "description": "Switch the unit test / production code.",
+  "version": "0.1.0",
   "author": "HOMMA Takashi",
   "license": "MIT",
   "repository": {
