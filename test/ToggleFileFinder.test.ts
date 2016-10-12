@@ -18,6 +18,10 @@ class FakeBehavior implements ToggleFileFinder.ToggleFileFinderBehavior {
     showWarningMessage(message: string, ...items: string[]) {
     }
 }
+let path = require('path');
+function resolve(filepath: string) {
+    return filepath.replace(/\//g, path.sep);
+}
 suite('ToggleFileFinder Tests', () => {
 
     let behavior: FakeBehavior;
@@ -35,38 +39,38 @@ suite('ToggleFileFinder Tests', () => {
         });
 
         test('match the suffix ... code to Spec', () => {
-            return sut.readFilesBy('/src/foo.js', ['Spec'], null).then(() => {
+            return sut.readFilesBy(resolve('/src/foo.js'), ['Spec'], null).then(() => {
                 assert(sut.matchingFiles);
-                assert.equal(sut.matchingFiles[0], '/src/foo.js');
-                assert.equal(sut.matchingFiles[1], '/test/fooSpec.js');
+                assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
+                assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
                 assert.equal(sut.matchingFiles.length, 2);
             });
         });
 
         test('match the suffix ... code to Test', () => {
-            return sut.readFilesBy('/src/foo.js', ['Test'], null).then(() => {
+            return sut.readFilesBy(resolve('/src/foo.js'), ['Test'], null).then(() => {
                 assert(sut.matchingFiles);
-                assert.equal(sut.matchingFiles[0], '/src/foo.js');
-                assert.equal(sut.matchingFiles[1], '/test/fooTest.js');
+                assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
+                assert.equal(sut.matchingFiles[1], resolve('/test/fooTest.js'));
                 assert.equal(sut.matchingFiles.length, 2);
             });
         });
 
         test('match the suffix ... code to Test&Spec', () => {
-            return sut.readFilesBy('/src/foo.js', ['Spec', 'Test'], null).then(() => {
+            return sut.readFilesBy(resolve('/src/foo.js'), ['Spec', 'Test'], null).then(() => {
                 assert(sut.matchingFiles);
-                assert.equal(sut.matchingFiles[0], '/src/foo.js');
-                assert.equal(sut.matchingFiles[1], '/test/fooSpec.js');
-                assert.equal(sut.matchingFiles[2], '/test/fooTest.js');
+                assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
+                assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
+                assert.equal(sut.matchingFiles[2], resolve('/test/fooTest.js'));
                 assert.equal(sut.matchingFiles.length, 3);
             });
         });
 
         test('match the suffix ... Spec to code', () => {
-            return sut.readFilesBy('/src/fooSpec.js', ['Spec'], null).then(() => {
+            return sut.readFilesBy(resolve('/src/fooSpec.js'), ['Spec'], null).then(() => {
                 assert(sut.matchingFiles);
-                assert.equal(sut.matchingFiles[0], '/src/foo.js');
-                assert.equal(sut.matchingFiles[1], '/test/fooSpec.js');
+                assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
+                assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
                 assert.equal(sut.matchingFiles.length, 2);
             });
         });
