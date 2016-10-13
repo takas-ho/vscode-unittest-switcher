@@ -44,6 +44,7 @@ suite('ToggleFileFinder Tests', () => {
                 assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
                 assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
                 assert.equal(sut.matchingFiles.length, 2);
+                assert.equal(sut.currentFileOfToggle(), resolve('/src/foo.js'));
             });
         });
 
@@ -53,6 +54,7 @@ suite('ToggleFileFinder Tests', () => {
                 assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
                 assert.equal(sut.matchingFiles[1], resolve('/test/fooTest.js'));
                 assert.equal(sut.matchingFiles.length, 2);
+                assert.equal(sut.currentFileOfToggle(), resolve('/src/foo.js'));
             });
         });
 
@@ -63,15 +65,17 @@ suite('ToggleFileFinder Tests', () => {
                 assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
                 assert.equal(sut.matchingFiles[2], resolve('/test/fooTest.js'));
                 assert.equal(sut.matchingFiles.length, 3);
+                assert.equal(sut.currentFileOfToggle(), resolve('/src/foo.js'));
             });
         });
 
         test('match the suffix ... Spec to code', () => {
-            return sut.readFilesBy(resolve('/src/fooSpec.js'), ['Spec'], null).then(() => {
+            return sut.readFilesBy(resolve('/test/fooSpec.js'), ['Spec'], null).then(() => {
                 assert(sut.matchingFiles);
                 assert.equal(sut.matchingFiles[0], resolve('/src/foo.js'));
                 assert.equal(sut.matchingFiles[1], resolve('/test/fooSpec.js'));
                 assert.equal(sut.matchingFiles.length, 2);
+                assert.equal(sut.currentFileOfToggle(), resolve('/test/fooSpec.js'));
             });
         });
 
