@@ -58,6 +58,11 @@ It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
+### 0.1.1
+
+- Adopted the icon.
+- Added default switching rule '_spec'.
+
 ### 0.1.0
 
 - Added suffix settings of unit test.
