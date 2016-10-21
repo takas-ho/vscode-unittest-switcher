@@ -28,6 +28,7 @@ win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j2
     "unittest-switcher.unittest.suffix": [
         "Spec",
         "-spec",
+        "_spec",
         "Test",
         "-test",
         ".test"
@@ -40,10 +41,11 @@ win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j2
 |----|----|----|
 |Yes|foo.js|fooSpec.js|
 |Yes|foo.js|foo-spec.js|
-|Yes|foo.js|fooTest.js|
+|Yes|bar.rb|bar_spec.rb|
+|Yes|baz.java|bazTest.java|
 |Yes|foo.js|foo-test.js|
-|Yes|foo.js|foo.test.js|
-|No|foo.js|foo.test.ts|
+|Yes|qux.ts|qux.test.ts|
+|No|baz.java|baz.test.ts|
 |No|foo.js|fooSpec.js.map|
 
 ## Keyboard Shortcuts

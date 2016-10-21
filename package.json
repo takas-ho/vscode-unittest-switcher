@@ -56,7 +56,7 @@
       "title": "UnitTest Switcher Options",
       "properties": {
         "unittest-switcher.unittest.suffix": {
-          "default": ["Spec", "-spec", "Test", "-test", ".test"],
+          "default": ["Spec", "-spec", "_spec", "Test", "-test", ".test"],
           "description": "UnitTest suffix",
           "type": ["string"]
         }
