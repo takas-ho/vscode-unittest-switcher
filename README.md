@@ -2,17 +2,17 @@
 
 This extension supports that switch the `unit test` / `production code`.
 
+||Master build|Current build
+--------|------------|-------------
+|linux|[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)|[![Current statuc](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
+|win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")|[![Current status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher "Current Build Status")
+
 ## Features
 - Switch the `unit test` / `production code`.
     - Editor context menu `Go to Test/Code`.
     - Keyboard Shortcut `CTRL + 9` key.
     - Invoke `>Go to Test/Code` to the Command Palette(F1).
 - Customizable suffix rule of `unit test`.
-
-||Master build|Current build
---------|------------|-------------
-linux|[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)|[![Current statuc](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
-win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")|[![Current status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher "Current Build Status")
 
 #### Example
 
