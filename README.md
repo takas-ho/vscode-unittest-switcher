@@ -45,8 +45,8 @@ This extension supports that switch the `unit test` / `production code`.
 |Yes|Baz.java|BazTest.java|
 |Yes|foo.js|foo-test.js|
 |Yes|qux.ts|qux.test.ts|
-|No|qux.js|qux.test.ts|
-|No|foo.js|fooSpec.js.map|
+|No|qux.**js**|qux.test.**ts**|
+|No|foo.**js**|fooSpec.**js.map**|
 
 ## Keyboard Shortcuts
 
