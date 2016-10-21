@@ -3,6 +3,7 @@
   "displayName": "UnitTest Switcher",
   "description": "Switch the unit test / production code.",
   "version": "0.1.0",
+  "icon": "images/icon.png",
   "author": "HOMMA Takashi",
   "license": "MIT",
   "keywords": [
@@ -55,7 +56,7 @@
       "title": "UnitTest Switcher Options",
       "properties": {
         "unittest-switcher.unittest.suffix": {
-          "default": ["Spec", "-spec", "Test", "-test", ".test"],
+          "default": ["Spec", "-spec", "_spec", "Test", "-test", ".test"],
           "description": "UnitTest suffix",
           "type": ["string"]
         }

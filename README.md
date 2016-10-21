@@ -2,17 +2,17 @@
 
 This extension supports that switch the `unit test` / `production code`.
 
+||Master build|Current build
+--------|------------|-------------
+|linux|[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)|[![Current statuc](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
+|win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")|[![Current status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher "Current Build Status")
+
 ## Features
 - Switch the `unit test` / `production code`.
     - Editor context menu `Go to Test/Code`.
     - Keyboard Shortcut `CTRL + 9` key.
     - Invoke `>Go to Test/Code` to the Command Palette(F1).
 - Customizable suffix rule of `unit test`.
-
-||Master build|Current build
---------|------------|-------------
-linux|[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)|[![Current statuc](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
-win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")|[![Current status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher "Current Build Status")
 
 #### Example
 
@@ -28,6 +28,7 @@ win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j2
     "unittest-switcher.unittest.suffix": [
         "Spec",
         "-spec",
+        "_spec",
         "Test",
         "-test",
         ".test"
@@ -40,10 +41,11 @@ win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j2
 |----|----|----|
 |Yes|foo.js|fooSpec.js|
 |Yes|foo.js|foo-spec.js|
-|Yes|foo.js|fooTest.js|
+|Yes|bar.rb|bar_spec.rb|
+|Yes|baz.java|bazTest.java|
 |Yes|foo.js|foo-test.js|
-|Yes|foo.js|foo.test.js|
-|No|foo.js|foo.test.ts|
+|Yes|qux.ts|qux.test.ts|
+|No|baz.java|baz.test.ts|
 |No|foo.js|fooSpec.js.map|
 
 ## Keyboard Shortcuts
