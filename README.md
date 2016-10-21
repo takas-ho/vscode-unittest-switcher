@@ -42,10 +42,10 @@ This extension supports that switch the `unit test` / `production code`.
 |Yes|foo.js|fooSpec.js|
 |Yes|foo.js|foo-spec.js|
 |Yes|bar.rb|bar_spec.rb|
-|Yes|baz.java|bazTest.java|
+|Yes|Baz.java|BazTest.java|
 |Yes|foo.js|foo-test.js|
 |Yes|qux.ts|qux.test.ts|
-|No|baz.java|baz.test.ts|
+|No|qux.js|qux.test.ts|
 |No|foo.js|fooSpec.js.map|
 
 ## Keyboard Shortcuts
