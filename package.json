@@ -60,7 +60,7 @@
       "properties": {
         "unittest-switcher.unittest.suffix": {
           "default": ["Spec", "-spec", "_spec", "Test", "-test", ".test"],
-          "description": "UnitTest suffix",
+          "description": "Suffix rule of unit test (case sensitive)",
           "type": ["string"]
         }
       }

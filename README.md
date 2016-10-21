@@ -24,7 +24,7 @@ This extension supports that switch the `unit test` / `production code`.
 - suffix rule of `unit test`.
 ```json
 {
-    // UnitTest suffix
+    // Suffix rule of unit test (case sensitive)
     "unittest-switcher.unittest.suffix": [
         "Spec",
         "-spec",
