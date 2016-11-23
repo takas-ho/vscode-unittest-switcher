@@ -27,6 +27,7 @@ This extension supports that switch the `unit test` / `production code`.
         "Spec",
         "-spec",
         "_spec",
+        ".spec",
         "Test",
         "-test",
         ".test"
@@ -38,11 +39,12 @@ This extension supports that switch the `unit test` / `production code`.
 |Switch?|production code|unit test|
 |----|----|----|
 |Yes|foo.js|fooSpec.js|
-|Yes|foo.js|foo-spec.js|
-|Yes|bar.rb|bar_spec.rb|
-|Yes|Baz.java|BazTest.java|
-|Yes|foo.js|foo-test.js|
-|Yes|qux.ts|qux.test.ts|
+|Yes|bar.js|bar-spec.js|
+|Yes|baz.service.ts|baz.service.spec.ts|
+|Yes|qux.rb|qux_spec.rb|
+|Yes|Foo.java|FooTest.java|
+|Yes|bar.js|bar-test.js|
+|Yes|baz.ts|baz.test.ts|
 |No|qux.**js**|qux.test.**ts**|
 |No|foo.**js**|fooSpec.**js.map**|
 
