@@ -58,6 +58,11 @@ It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
+### 0.1.2
+
+- Added default switching rule '.spec'.
+- Fix comments.
+
 ### 0.1.1
 
 - Adopted the icon.
