@@ -81,4 +81,22 @@ suite('ToggleFileFinder Tests', () => {
 
     });
 
+    suite('readFilesBy test for multi period', () => {
+
+        setup(() => {
+            behavior.files = ['/src/foo.service.ts', '/test/foo.service.spec.ts', '/test/foo.spec.ts', '/src/foo.bar.ts'];
+        });
+
+        test('match the suffix ... code to `.spec`', () => {
+            return sut.readFilesBy(resolve('/src/foo.service.ts'), ['.spec'], null).then(() => {
+                assert(sut.matchingFiles);
+                assert.equal(sut.matchingFiles[0], resolve('/src/foo.service.ts'));
+                assert.equal(sut.matchingFiles[1], resolve('/test/foo.service.spec.ts'));
+                assert.equal(sut.matchingFiles.length, 2);
+                assert.equal(sut.currentFileOfToggle(), resolve('/src/foo.service.ts'));
+            });
+        });
+
+    });
+
 });

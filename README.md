@@ -2,10 +2,8 @@
 
 This extension supports that switch the `unit test` / `production code`.
 
-||Master build|Current build
---------|------------|-------------
-|linux|[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)|[![Current statuc](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
-|win|[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")|[![Current status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher "Current Build Status")
+[![Master status](https://travis-ci.org/takas-ho/vscode-unittest-switcher.svg?branch=master)](https://travis-ci.org/takas-ho/vscode-unittest-switcher)
+[![Master status](https://ci.appveyor.com/api/projects/status/6rbw3na3n5l4j21n/branch/master?svg=true)](https://ci.appveyor.com/project/takas-ho/vscode-unittest-switcher/branch/master "Master Branch Status")
 
 ## Features
 - Switch the `unit test` / `production code`.
@@ -24,11 +22,12 @@ This extension supports that switch the `unit test` / `production code`.
 - suffix rule of `unit test`.
 ```json
 {
-    // UnitTest suffix
+    // Suffix rule of unit test (case sensitive)
     "unittest-switcher.unittest.suffix": [
         "Spec",
         "-spec",
         "_spec",
+        ".spec",
         "Test",
         "-test",
         ".test"
@@ -40,13 +39,14 @@ This extension supports that switch the `unit test` / `production code`.
 |Switch?|production code|unit test|
 |----|----|----|
 |Yes|foo.js|fooSpec.js|
-|Yes|foo.js|foo-spec.js|
-|Yes|bar.rb|bar_spec.rb|
-|Yes|baz.java|bazTest.java|
-|Yes|foo.js|foo-test.js|
-|Yes|qux.ts|qux.test.ts|
-|No|baz.java|baz.test.ts|
-|No|foo.js|fooSpec.js.map|
+|Yes|bar.js|bar-spec.js|
+|Yes|baz.service.ts|baz.service.spec.ts|
+|Yes|qux.rb|qux_spec.rb|
+|Yes|Foo.java|FooTest.java|
+|Yes|bar.js|bar-test.js|
+|Yes|baz.ts|baz.test.ts|
+|No|qux.**js**|qux.test.**ts**|
+|No|foo.**js**|fooSpec.**js.map**|
 
 ## Keyboard Shortcuts
 
