@@ -58,6 +58,10 @@ It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
+### 0.1.3
+
+- Fix the settings warning 'Incorrect type. Expect one of String'.
+
 ### 0.1.2
 
 - Added default switching rule '.spec'.
