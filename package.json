@@ -61,7 +61,7 @@
         "unittest-switcher.unittest.suffix": {
           "default": ["Spec", "-spec", "_spec", ".spec", "Test", "-test", ".test"],
           "description": "Suffix rule of unit test (case sensitive)",
-          "type": ["string"]
+          "type": ["array"]
         }
       }
     }
