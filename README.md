@@ -59,6 +59,10 @@ It pays tribute to [QuickJUnit](https://github.com/kompiro/quick-junit).
 
 ## Release Notes
 
+### 0.1.4
+
+- Added default switching rule '_test'.
+
 ### 0.1.3
 
 - Fix the settings warning 'Incorrect type. Expect one of String'.

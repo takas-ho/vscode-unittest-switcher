@@ -2,7 +2,7 @@
   "name": "unittest-switcher",
   "displayName": "UnitTest Switcher",
   "description": "Switch the unit test / production code.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "icon": "images/icon.png",
   "author": "HOMMA Takashi",
   "license": "MIT",
@@ -48,20 +48,32 @@
       }
     ],
     "menus": {
-        "editor/context": [{
-            "when": "resourceLangId != markdown",
-            "command": "unittest-switcher.go-to-test-code",
-            "group": "navigation"
-        }]
+      "editor/context": [
+        {
+          "when": "resourceLangId != markdown",
+          "command": "unittest-switcher.go-to-test-code",
+          "group": "navigation"
+        }
+      ]
     },
     "configuration": {
       "type": "object",
       "title": "UnitTest Switcher Options",
       "properties": {
         "unittest-switcher.unittest.suffix": {
-          "default": ["Spec", "-spec", "_spec", ".spec", "Test", "-test", ".test"],
+          "default": [
+            "Spec",
+            "-spec",
+            "_spec",
+            ".spec",
+            "Test",
+            "-test",
+            ".test"
+          ],
           "description": "Suffix rule of unit test (case sensitive)",
-          "type": ["array"]
+          "type": [
+            "array"
+          ]
         }
       }
     }
