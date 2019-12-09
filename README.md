@@ -30,7 +30,8 @@ This extension supports that switch the `unit test` / `production code`.
         ".spec",
         "Test",
         "-test",
-        ".test"
+        ".test",
+        "_test"
     ],
 }
 ```
