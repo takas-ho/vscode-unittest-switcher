@@ -36,7 +36,7 @@ export class FinderController {
         }
         let searchExclude = vscode.workspace.getConfiguration('search').get('exclude');
         let unittestSuffixes: string[] = vscode.workspace.getConfiguration('unittest-switcher')
-            .get<string[]>('unittest.suffix', ['Spec', '-spec', '_spec', '.spec', 'Test', '-test', '.test']);
+            .get<string[]>('unittest.suffix', ['Spec', '-spec', '_spec', '.spec', 'Test', '-test', '.test', '_test']);
         this.finder.readFilesBy(editorFileName, unittestSuffixes, this.extractSearchExclude(searchExclude));
     }
 
