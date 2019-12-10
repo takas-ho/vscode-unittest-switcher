@@ -22,7 +22,7 @@
   },
   "publisher": "takas-ho",
   "engines": {
-    "vscode": "^1.5.0"
+    "vscode": "^1.1.36"
   },
   "categories": [
     "Other"
